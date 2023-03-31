@@ -13,13 +13,14 @@
   </head>
 
   <body>
-    <div class="start-page">
+    <div class="start-page show">
       <h1>DON'T BREAK THE ICE</h1>
       <p>a game for Michael's kids</p>
       <button class="begin">BEGIN</button>
-      <button class="instructions">HOW TO PLAY?</button>
+      <button class="info">HOW TO PLAY?</button>
     </div>
-    <div class="game-page show">
+
+    <div class="game-page">
       <h1>DON'T BREAK THE ICE</h1>
       <p>GAME.. START!!</p>
       <div class="board" id="board">
@@ -37,14 +38,14 @@
         <div class="tile">11</div>
         <div class="tile">12</div>
         <div class="tile">13</div>
-        <div class="tile bear">14</div>
-        <div class="tile bear">15</div>
+        <div class="tile peng">14</div>
+        <div class="tile peng">15</div>
         <div class="tile">16</div>
         <div class="tile">17</div>
         <div class="tile">18</div>
         <div class="tile">19</div>
-        <div class="tile bear">20</div>
-        <div class="tile bear">21</div>
+        <div class="tile peng">20</div>
+        <div class="tile peng">21</div>
         <div class="tile">22</div>
         <div class="tile">23</div>
         <div class="tile">24</div>
@@ -63,7 +64,29 @@
       <button class="info">How to Play?</button>
       <button class="return-to-menu">Return to Menu</button>
     </div>
-    <div class="info-panel"></div>
+    <div class="info-page show">
+      <div class="info-panel">
+        <button class="exit-button">X</button>
+        <div to-play>
+          <ul>
+            <span>How to play:</span>
+            <li>Take turns to tap out the ice blocks!</li>
+            <li>Do not tap on Peng the Penguin!</li>
+            <li>To win, force your opponent to drop Peng!</li>
+          </ul>
+        </div>
+        <div fall-logic>
+          <ul>
+            <span>Fall Logic (to be changed)</span>
+            <li>Click on the tile to make it fall!</li>
+            <li>If a tile does not have adjacent tiles, it will fall too!</li>
+            <li>Peng falls when there are no more tiles on opposite sides.</li>
+            <!-- insert image -->
+          </ul>
+        </div>
+      </div>
+    </div>
+
     <div class="result-page">
       <div result-text>Player 1 Wins!</div>
       <button id="restartButton">Restart Game</button>

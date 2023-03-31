@@ -114,7 +114,7 @@ body {
   border-radius: var(--corner);
 }
 
-.tile.bear {
+.tile.peng {
   background-image: none;
   background-color: red;
   cursor: not-allowed;
@@ -135,17 +135,6 @@ body {
   height: var(--cell-size);
   opacity: 0.4;
 }
-
-/* .inst-panel {
-  display: none;
-  height: 600px;
-  width: 400px;
-  background-color: whitesmoke;
-}
-
-.inst-panel.show {
-  display: flex;
-} */
 
 .result-page {
   display: none;
@@ -179,4 +168,60 @@ body {
 
 .result-page.show {
   display: flex;
+}
+
+.info-page {
+  display: none;
+  position: fixed;
+  height: 100vh;
+  width: 100vw;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.8);
+}
+
+.info-page.show {
+  display: flex;
+}
+
+.info-panel {
+  display: flex;
+  flex-direction: column;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 800px;
+  width: 500px;
+  margin: auto;
+  background-color: teal;
+  color: orange;
+  font-size: 2rem;
+  border: 1px solid salmon;
+  border-radius: var(--corner);
+}
+
+.info-panel span {
+  text-decoration: underline;
+}
+
+.info-panel button {
+  height: 40px;
+  width: 40px;
+  background-color: salmon;
+  border: 5px solid lightpink;
+  border-radius: 10px;
+  font-size: 1.5rem;
+  position: absolute;
+  right: 0px;
+  box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.info-panel button:hover {
+  background-color: lightpink;
+  border-color: rgb(250, 249, 246);
+  color: aquamarine;
 }
