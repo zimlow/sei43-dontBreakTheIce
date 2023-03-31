@@ -129,11 +129,11 @@ body {
   /* background-color: azure; */
 }
 
-.board .tile:not(.bear):not(.fell):hover {
+.board .tile:not(.peng):not(.fell):hover {
   content: "";
   width: var(--cell-size);
   height: var(--cell-size);
-  opacity: 0.4;
+  opacity: 0.2;
 }
 
 .result-page {
