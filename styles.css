@@ -1,0 +1,182 @@
+* {
+  box-sizing: border-box;
+}
+
+:root {
+  --cell-size: 100px;
+  --corner: 15px;
+}
+html {
+  font-family: "Delicious Handrawn", cursive;
+}
+body {
+  margin: 0px;
+}
+
+.start-page {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: linear-gradient(skyblue, white);
+  justify-content: center;
+  align-items: center;
+  color: black;
+  font-size: 5em;
+  flex-direction: column;
+  text-align: center;
+  padding: 10px;
+  text-shadow: 2px 5px 5px;
+}
+.start-page.show {
+  display: flex;
+}
+.start-page h1 {
+  margin: 0;
+}
+.start-page p {
+  font-size: 5rem;
+  color: black;
+  margin: 0;
+  padding: 0.5em;
+}
+.start-page button {
+  font-size: 3rem;
+  background-color: lightcyan;
+  border: 1px solid black;
+  padding: 0.25em 0.5em;
+  cursor: pointer;
+  margin: 20px;
+  width: 500px;
+}
+
+.start-page button:hover {
+  color: rgb(61, 70, 205);
+  background-color: lightblue;
+  border: 1px solid white;
+}
+
+.game-page {
+  display: none;
+  height: 100vh;
+  width: 100vw;
+  margin: auto;
+  /* border: 1px solid black; */
+  text-align: center;
+  justify-content: start;
+  align-items: center;
+  background-image: radial-gradient(white 30%, skyblue);
+}
+
+.game-page.show {
+  display: flex;
+  flex-direction: column;
+}
+
+.board {
+  display: grid;
+  grid-template-columns: repeat(6, auto);
+  /* place-items: center; */
+  height: 600px;
+  width: 600px;
+  box-sizing: content-box;
+  border: 50px solid rgba(135, 206, 235, 0.5);
+  border-radius: 10%;
+  background-color: skyblue;
+  margin: 100px auto 0;
+}
+
+.game-page button {
+  font-size: 1rem;
+  color: gray;
+  background-color: transparent;
+  border: none;
+  padding: 0.25em 0.5em;
+  cursor: pointer;
+  /* margin: 20px; */
+  width: 300px;
+}
+
+.game-page button:hover {
+  color: rgba(61, 70, 205);
+  background-color: lightblue;
+  /* border: 1px solid white; */
+}
+
+.tile {
+  width: var(--cell-size);
+  height: var(--cell-size);
+  cursor: pointer;
+  background-image: url(https://creazilla-store.fra1.digitaloceanspaces.com/cliparts/1999203/blue-ice-tile-clipart-xl.png);
+  background-size: cover;
+  border-radius: var(--corner);
+}
+
+.tile.bear {
+  background-image: none;
+  background-color: red;
+  cursor: not-allowed;
+  width: 100px;
+  height: 100px;
+}
+
+.tile.fell {
+  background-color: lightblue;
+  background-image: none;
+  border: 1px solid lightpink;
+  /* background-color: azure; */
+}
+
+.board .tile:not(.bear):not(.fell):hover {
+  content: "";
+  width: var(--cell-size);
+  height: var(--cell-size);
+  opacity: 0.4;
+}
+
+/* .inst-panel {
+  display: none;
+  height: 600px;
+  width: 400px;
+  background-color: whitesmoke;
+}
+
+.inst-panel.show {
+  display: flex;
+} */
+
+.result-page {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.9);
+  justify-content: center;
+  align-items: center;
+  color: aquamarine;
+  font-size: 5rem;
+  flex-direction: column;
+}
+
+.result-page button {
+  font-size: 3rem;
+  background-color: white;
+  border: 1px solid black;
+  padding: 0.25em 0.5em;
+  cursor: pointer;
+  margin: 10px;
+}
+
+.result-page button:hover {
+  background-color: black;
+  color: white;
+  border-color: white;
+}
+
+.result-page.show {
+  display: flex;
+}
