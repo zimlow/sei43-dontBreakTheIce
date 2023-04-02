@@ -118,11 +118,14 @@ body {
   background-image: none;
   background-color: red;
   cursor: not-allowed;
-  width: 100px;
-  height: 100px;
+}
+.tile.peng.fell {
+  background-image: none;
+  background-color: black;
+  cursor: not-allowed;
 }
 
-.tile.fell {
+.tile:not(peng).fell {
   background-color: lightblue;
   background-image: none;
   border: 1px solid lightpink;
