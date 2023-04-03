@@ -22,7 +22,7 @@ body {
   background-image: linear-gradient(skyblue, white);
   justify-content: center;
   align-items: center;
-  color: rgb(124, 38, 38);
+  color: teal;
   font-size: 5em;
   flex-direction: column;
   text-align: center;
@@ -37,7 +37,7 @@ body {
 }
 .start-page p {
   font-size: 5rem;
-  color: rgb(245, 245, 116);
+  color: teal;
   margin: 0;
   padding: 0.5em;
 }
