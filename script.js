@@ -15,7 +15,7 @@ const T_LEFT = [7, 8, 9, 10, 11, 13, 16, 17, 19, 23, 25, 26, 29, 31, 32, 33, 34,
 
 let player1Turn;
 
-const tileElements = document.querySelectorAll(".tile");
+const tileElements = document.querySelectorAll("[cell]");
 const startPage = document.querySelector(".start-page");
 const gamePage = document.querySelector(".game-page");
 const infoPage = document.querySelector(".info-page");
@@ -25,7 +25,7 @@ const exit = document.querySelector(".exit-button");
 const restartButton = document.querySelectorAll(".restart-button");
 const resultPage = document.querySelector(".result-page");
 const getPeng = document.querySelectorAll(".peng");
-const resultTextMessage = document.querySelector("[result-text]"); //why need []
+const resultTextMessage = document.querySelector("[result-text]");
 const getBoard = document.querySelector(".board");
 
 beginButton.addEventListener("click", beginGame);
@@ -33,11 +33,6 @@ beginButton.addEventListener("click", beginGame);
 infoButton.forEach((item) => item.addEventListener("click", showInfo));
 restartButton.forEach((item) => item.addEventListener("click", backToMenu));
 
-//startgame
-//break tile
-//check adjacent tile fell
-//check peng fell
-//swapturns
 function beginGame() {
   player1Turn = true;
   startPage.classList.remove("show");
@@ -69,15 +64,14 @@ function handleClick(e) {
   tile.classList.add("fell");
 
   if (checkPengFall()) {
-    console.log("huat ah");
     endGame();
   } else {
-    checkAllTiles();
     swapTurns();
+    checkAllTiles();
   }
 }
 
-//stilll has problems. might need to do individual
+//breadth-first-search
 function checkAllTiles() {
   //scan whole board for fallen
   for (let i = 0; i <= tileElements.length; i++) {
@@ -111,11 +105,12 @@ function checkAllTiles() {
       }
     }
     getPeng.forEach((peng) => peng.classList.remove("fell"));
-    return;
   }
+  return;
 }
 
-//if inside every combination, at least one tile contains 'fell', there is no more minimum support, fall criteria returns true
+//if inside every combination, at least one tile contains 'fell',
+//there is no more minimum support, fall criteria returns true
 function checkPengFall() {
   return FALL_CRITERIA.every((combination) => {
     return combination.some((index) => {

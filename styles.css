@@ -63,7 +63,6 @@ body {
   height: 100vh;
   width: 100vw;
   margin: auto;
-  /* border: 1px solid black; */
   text-align: center;
   justify-content: start;
   align-items: center;
@@ -78,7 +77,6 @@ body {
 .board {
   display: grid;
   grid-template-columns: repeat(6, auto);
-  /* place-items: center; */
   height: 600px;
   width: 600px;
   box-sizing: content-box;
@@ -95,14 +93,12 @@ body {
   border: none;
   padding: 0.25em 0.5em;
   cursor: pointer;
-  /* margin: 20px; */
   width: 300px;
 }
 
 .game-page button:hover {
   color: rgba(61, 70, 205);
   background-color: lightblue;
-  /* border: 1px solid white; */
 }
 
 .tile {
@@ -129,7 +125,6 @@ body {
   background-color: lightblue;
   background-image: none;
   border: 1px solid lightpink;
-  /* background-color: azure; */
 }
 
 .board .tile:not(.peng):not(.fell):hover {
