@@ -1,14 +1,13 @@
 * {
   box-sizing: border-box;
+  font-family: "Delicious Handrawn", cursive;
 }
 
 :root {
   --cell-size: 100px;
-  --corner: 15px;
+  --corner: 8px;
 }
-html {
-  font-family: "Delicious Handrawn", cursive;
-}
+
 body {
   margin: 0px;
 }
@@ -23,12 +22,12 @@ body {
   background-image: linear-gradient(skyblue, white);
   justify-content: center;
   align-items: center;
-  color: black;
+  color: rgb(124, 38, 38);
   font-size: 5em;
   flex-direction: column;
   text-align: center;
   padding: 10px;
-  text-shadow: 2px 5px 5px;
+  /* text-shadow: 2px 5px 5px; */
 }
 .start-page.show {
   display: flex;
@@ -38,29 +37,30 @@ body {
 }
 .start-page p {
   font-size: 5rem;
-  color: black;
+  color: rgb(245, 245, 116);
   margin: 0;
   padding: 0.5em;
 }
 .start-page button {
   font-size: 3rem;
   background-color: lightcyan;
-  border: 1px solid black;
+  border: 3px solid black;
   padding: 0.25em 0.5em;
   cursor: pointer;
   margin: 20px;
   width: 500px;
+  border-radius: var(--corner);
 }
 
 .start-page button:hover {
   color: rgb(61, 70, 205);
   background-color: lightblue;
-  border: 1px solid white;
+  border: 3px solid white;
 }
 
 .game-page {
   display: none;
-  height: 100vh;
+  position: absolute;
   width: 100vw;
   margin: auto;
   text-align: center;
@@ -83,7 +83,7 @@ body {
   border: 50px solid rgba(135, 206, 235, 0.5);
   border-radius: 10%;
   background-color: skyblue;
-  margin: 100px auto 0;
+  margin: 30px auto 0;
 }
 
 .game-page button {
@@ -111,10 +111,16 @@ body {
 }
 
 .tile.peng {
-  background-image: none;
-  background-color: red;
   cursor: not-allowed;
+  border-radius: var(--corner);
+  grid-column: 3 / 5;
+  grid-row: 3 / 5;
+  height: 200px;
+  width: 200px;
+  background-image: url("https://i.pinimg.com/736x/37/20/f2/3720f2d01965ea962dacf6f4cfcbf3e4.jpg");
+  border: 1px solid #f5f5f5;
 }
+
 .tile.peng.fell {
   background-image: none;
   background-color: black;
@@ -122,9 +128,9 @@ body {
 }
 
 .tile:not(peng).fell {
-  background-color: lightblue;
+  background-color: #f5f5f5;
   background-image: none;
-  border: 1px solid lightpink;
+  border: 1px solid skyblue;
 }
 
 .board .tile:not(.peng):not(.fell):hover {
@@ -155,13 +161,19 @@ body {
   border: 1px solid black;
   padding: 0.25em 0.5em;
   cursor: pointer;
-  margin: 10px;
+  margin: 30px;
+  border-radius: var(--corner);
 }
 
 .result-page button:hover {
   background-color: black;
   color: white;
   border-color: white;
+}
+
+.result-page img {
+  border-radius: 200px;
+  height: 300px;
 }
 
 .result-page.show {
@@ -173,33 +185,43 @@ body {
   position: fixed;
   height: 100vh;
   width: 100vw;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
+  justify-content: center;
+  align-items: center;
   background-color: rgba(0, 0, 0, 0.8);
 }
 
 .info-page.show {
   display: flex;
+  /* flex-direction: column; */
+  /* position: absolute; */
 }
 
 .info-panel {
-  display: flex;
-  flex-direction: column;
+  display: grid;
   position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  height: 800px;
-  width: 500px;
-  margin: auto;
+  grid-template-columns: 40px 480px 480px;
+  grid-template-rows: 40px auto;
+  height: 600px;
+  width: 1015px;
   background-color: teal;
   color: orange;
   font-size: 2rem;
   border: 1px solid salmon;
-  border-radius: var(--corner);
+  border-radius: 8px;
+  overflow-y: scroll;
+}
+
+.info-panel::-webkit-scrollbar {
+  width: 10px;
+}
+.info-panel::-webkit-scrollbar-track {
+  border-radius: 8px;
+  background-color: #e7e7e7;
+  border: 1px solid #cacaca;
+}
+.info-panel::-webkit-scrollbar-thumb {
+  border-radius: 8px;
+  background-color: #d55959;
 }
 
 .info-panel span {
@@ -207,19 +229,65 @@ body {
 }
 
 .info-panel button {
-  height: 40px;
-  width: 40px;
+  position: relative;
   background-color: salmon;
   border: 5px solid lightpink;
-  border-radius: 10px;
+  /* border-radius: 8px; */
   font-size: 1.5rem;
-  position: absolute;
-  right: 0px;
   box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.to-play-button {
+  height: 40px;
+  width: 480px;
+  grid-area: 1/2/2/3;
+}
+.to-fall-button {
+  height: 40px;
+  width: 480px;
+  grid-area: 1/3/2/4;
+}
+.exit-button {
+  height: 40px;
+  width: 40px;
+}
+
+.play-text {
+  display: none;
+  grid-area: 2/2/3/4;
+}
+
+.play-text li,
+.fall-text li {
+  padding: 20px;
+}
+
+.play-text.show {
+  display: flex;
+}
+
+.fall-text {
+  display: none;
+  grid-area: 2/2/3/4;
+}
+
+.fall-text img {
+  height: 50%;
+}
+
+.fall-text.show {
+  display: flex;
+}
+#tiles {
+  height: 30%;
 }
 
 .info-panel button:hover {
   background-color: lightpink;
   border-color: rgb(250, 249, 246);
   color: aquamarine;
+}
+
+ul {
+  height: 600px;
 }

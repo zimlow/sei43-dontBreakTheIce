@@ -27,6 +27,10 @@ const resultPage = document.querySelector(".result-page");
 const getPeng = document.querySelectorAll(".peng");
 const resultTextMessage = document.querySelector("[result-text]");
 const getBoard = document.querySelector(".board");
+const getPlayInfo = document.querySelector(".to-play-button");
+const getFallInfo = document.querySelector(".to-fall-button");
+const getPlayText = document.querySelector(".play-text");
+const getFallText = document.querySelector(".fall-text");
 
 beginButton.addEventListener("click", beginGame);
 
@@ -47,7 +51,19 @@ function beginGame() {
 
 function showInfo() {
   infoPage.classList.add("show");
+  getPlayInfo.addEventListener("click", goPlayInfo);
+
+  getFallInfo.addEventListener("click", goFallInfo);
   exit.addEventListener("click", () => infoPage.classList.remove("show"));
+}
+
+function goPlayInfo() {
+  getFallText.classList.remove("show");
+  getPlayText.classList.add("show");
+}
+function goFallInfo() {
+  getPlayText.classList.remove("show");
+  getFallText.classList.add("show");
 }
 
 function backToMenu() {
@@ -106,7 +122,6 @@ function checkAllTiles() {
     }
     getPeng.forEach((peng) => peng.classList.remove("fell"));
   }
-  return;
 }
 
 //if inside every combination, at least one tile contains 'fell',
