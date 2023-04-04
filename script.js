@@ -31,6 +31,7 @@ const getPlayInfo = document.querySelector(".to-play-button");
 const getFallInfo = document.querySelector(".to-fall-button");
 const getPlayText = document.querySelector(".play-text");
 const getFallText = document.querySelector(".fall-text");
+const writePlayerTurn = document.querySelector("[playerTurnText");
 
 beginButton.addEventListener("click", beginGame);
 
@@ -39,6 +40,7 @@ restartButton.forEach((item) => item.addEventListener("click", backToMenu));
 
 function beginGame() {
   player1Turn = true;
+  writePlayerTurn.innerText = "Player 1's  turn";
   startPage.classList.remove("show");
   gamePage.classList.add("show");
 
@@ -78,19 +80,18 @@ function backToMenu() {
 function handleClick(e) {
   let tile = e.target;
   tile.classList.add("fell");
-
+  checkAllTiles();
   if (checkPengFall()) {
     endGame();
   } else {
     swapTurns();
-    checkAllTiles();
   }
 }
 
 //breadth-first-search
 function checkAllTiles() {
   //scan whole board for fallen
-  for (let i = 0; i <= tileElements.length; i++) {
+  for (let i = 0; i < tileElements.length; i++) {
     if (tileElements[i].classList.contains("fell")) {
       if (T_LEFT.indexOf(i) >= 0) {
         if (tileElements[i - 7].classList.contains("fell")) {
@@ -136,6 +137,7 @@ function checkPengFall() {
 
 function swapTurns() {
   player1Turn = !player1Turn;
+  writePlayerTurn.innerText = `${player1Turn ? "Player 1's" : "Player 2's"} turn`;
 }
 
 function endGame() {
