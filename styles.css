@@ -139,9 +139,21 @@ h2 {
   background-color: #f5f5f5;
   background-image: none;
   border: 1px solid skyblue;
+  cursor: not-allowed;
 }
 
-.board .tile:not(.peng):not(.fell):hover {
+#player {
+  display: none;
+  font-size: 4rem;
+  font-family: sans-serif;
+  color: lightslategrey;
+  padding: 8px;
+}
+#player.show {
+  display: block;
+}
+
+.tile:not(.peng):not(.fell):hover {
   content: "";
   width: var(--cell-size);
   height: var(--cell-size);
@@ -300,4 +312,58 @@ h2 {
 
 ul {
   height: 600px;
+}
+
+.chosen-tiles {
+  position: absolute;
+  display: flex;
+  top: 40px;
+  left: 50px;
+  align-items: center;
+  color: grey;
+}
+
+.switch {
+  position: relative;
+  min-width: 60px;
+  min-height: 34px;
+  margin: 10px;
+}
+
+.switch input {
+  display: none;
+  height: 0;
+  width: 0;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  transition: 0.2s;
+  border-radius: 34px;
+}
+
+.slider::before {
+  position: absolute;
+  content: "";
+  height: 26px;
+  width: 26px;
+  left: 4px;
+  bottom: 4px;
+  background-color: white;
+  transition: 0.2s;
+  border-radius: 34px;
+}
+
+input:checked + .slider:before {
+  transform: translateX(26px);
+}
+
+input:checked + .slider {
+  background-color: rgb(1, 169, 169);
 }

@@ -31,7 +31,9 @@ const getPlayInfo = document.querySelector(".to-play-button");
 const getFallInfo = document.querySelector(".to-fall-button");
 const getPlayText = document.querySelector(".play-text");
 const getFallText = document.querySelector(".fall-text");
-const writePlayerTurn = document.querySelector("[playerTurnText");
+const writePlayerTurn = document.querySelector("[playerTurnText]");
+const switcher = document.querySelector(".switch");
+const playerTag = document.querySelectorAll("#player");
 
 beginButton.addEventListener("click", beginGame);
 
@@ -40,9 +42,17 @@ restartButton.forEach((item) => item.addEventListener("click", backToMenu));
 
 function beginGame() {
   player1Turn = true;
-  writePlayerTurn.innerText = "Player 1's  turn";
+
+  const playerTag = document.querySelectorAll("#player");
+  playerTag.forEach((item) => {
+    item.innerText = "";
+  });
+
+  writePlayerTurn.innerText = "Player 1's turn";
   startPage.classList.remove("show");
   gamePage.classList.add("show");
+
+  switcher.addEventListener("click", checkCheckBox);
 
   tileElements.forEach((element) => {
     if (element.classList.contains("peng") === false) {
@@ -80,6 +90,15 @@ function backToMenu() {
 function handleClick(e) {
   let tile = e.target;
   tile.classList.add("fell");
+
+  let assignPlayer = tile.querySelector("#player");
+
+  if (player1Turn) {
+    assignPlayer.innerText = "1";
+  } else {
+    assignPlayer.innerText = "2";
+  }
+
   checkAllTiles();
   if (checkPengFall()) {
     endGame();
@@ -88,7 +107,6 @@ function handleClick(e) {
   }
 }
 
-//breadth-first-search
 function checkAllTiles() {
   //scan whole board for fallen
   for (let i = 0; i < tileElements.length; i++) {
@@ -97,6 +115,25 @@ function checkAllTiles() {
         if (tileElements[i - 7].classList.contains("fell")) {
           tileElements[i - 6].classList.add("fell");
           tileElements[i - 1].classList.add("fell");
+
+          if (tileElements[i - 6].querySelector("#player") != null) {
+            if (!tileElements[i - 6].querySelector("#player").innerText) {
+              if (player1Turn) {
+                tileElements[i - 6].querySelector("#player").innerText = "1";
+              } else {
+                tileElements[i - 6].querySelector("#player").innerText = "2";
+              }
+            }
+          }
+          if (tileElements[i - 1].querySelector("#player") != null) {
+            if (!tileElements[i - 1].querySelector("#player").innerText) {
+              if (player1Turn) {
+                tileElements[i - 1].querySelector("#player").innerText = "1";
+              } else {
+                tileElements[i - 1].querySelector("#player").innerText = "2";
+              }
+            }
+          }
         }
       }
 
@@ -104,6 +141,25 @@ function checkAllTiles() {
         if (tileElements[i - 5].classList.contains("fell")) {
           tileElements[i - 6].classList.add("fell");
           tileElements[i + 1].classList.add("fell");
+
+          if (tileElements[i - 6].querySelector("#player") != null) {
+            if (!tileElements[i - 6].querySelector("#player").innerText) {
+              if (player1Turn) {
+                tileElements[i - 6].querySelector("#player").innerText = "1";
+              } else {
+                tileElements[i - 6].querySelector("#player").innerText = "2";
+              }
+            }
+          }
+          if (tileElements[i + 1].querySelector("#player") != null) {
+            if (!tileElements[i + 1].querySelector("#player").innerText) {
+              if (player1Turn) {
+                tileElements[i + 1].querySelector("#player").innerText = "1";
+              } else {
+                tileElements[i + 1].querySelector("#player").innerText = "2";
+              }
+            }
+          }
         }
       }
 
@@ -111,6 +167,25 @@ function checkAllTiles() {
         if (tileElements[i + 5].classList.contains("fell")) {
           tileElements[i - 1].classList.add("fell");
           tileElements[i + 6].classList.add("fell");
+
+          if (tileElements[i - 1].querySelector("#player") != null) {
+            if (!tileElements[i - 1].querySelector("#player").innerText) {
+              if (player1Turn) {
+                tileElements[i - 1].querySelector("#player").innerText = "1";
+              } else {
+                tileElements[i - 1].querySelector("#player").innerText = "2";
+              }
+            }
+          }
+          if (tileElements[i + 6].querySelector("#player") != null) {
+            if (!tileElements[i + 6].querySelector("#player").innerText) {
+              if (player1Turn) {
+                tileElements[i + 6].querySelector("#player").innerText = "1";
+              } else {
+                tileElements[i + 6].querySelector("#player").innerText = "2";
+              }
+            }
+          }
         }
       }
 
@@ -118,6 +193,25 @@ function checkAllTiles() {
         if (tileElements[i + 7].classList.contains("fell")) {
           tileElements[i + 1].classList.add("fell");
           tileElements[i + 6].classList.add("fell");
+
+          if (tileElements[i + 1].querySelector("#player") != null) {
+            if (!tileElements[i + 1].querySelector("#player").innerText) {
+              if (player1Turn) {
+                tileElements[i + 1].querySelector("#player").innerText = "1";
+              } else {
+                tileElements[i + 1].querySelector("#player").innerText = "2";
+              }
+            }
+          }
+          if (tileElements[i + 6].querySelector("#player") != null) {
+            if (!tileElements[i + 6].querySelector("#player").innerText) {
+              if (player1Turn) {
+                tileElements[i + 6].querySelector("#player").innerText = "1";
+              } else {
+                tileElements[i + 6].querySelector("#player").innerText = "2";
+              }
+            }
+          }
         }
       }
     }
@@ -144,4 +238,18 @@ function endGame() {
 
   //whoever's turn cause peng to fall, loses
   resultTextMessage.innerText = `${player1Turn ? "Player 2" : "Player 1"} wins!`;
+}
+
+function checkCheckBox() {
+  const getToggle = document.getElementById("checkbox");
+
+  if (getToggle.checked) {
+    playerTag.forEach((item) => {
+      item.classList.add("show");
+    });
+  } else {
+    playerTag.forEach((item) => {
+      item.classList.remove("show");
+    });
+  }
 }
