@@ -125,8 +125,7 @@ function checkAllTiles() {
   }
 }
 
-//if inside every combination, at least one tile contains 'fell',
-//there is no more minimum support, fall criteria returns true
+//if inside every combination, at least one tile contains 'fell' there is no more minimum support, fall criteria returns true
 function checkPengFall() {
   return FALL_CRITERIA.every((combination) => {
     return combination.some((index) => {

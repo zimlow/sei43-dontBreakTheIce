@@ -14,11 +14,9 @@ body {
 
 .start-page {
   display: none;
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
+  position: absolute;
+  min-height: 100vh;
+  min-width: 100vw;
   background-image: linear-gradient(skyblue, white);
   justify-content: center;
   align-items: center;
@@ -27,20 +25,23 @@ body {
   flex-direction: column;
   text-align: center;
   padding: 10px;
-  /* text-shadow: 2px 5px 5px; */
 }
+
 .start-page.show {
   display: flex;
 }
+
 .start-page h1 {
   margin: 0;
 }
+
 .start-page p {
   font-size: 5rem;
   color: teal;
   margin: 0;
   padding: 0.5em;
 }
+
 .start-page button {
   font-size: 3rem;
   background-color: lightcyan;
@@ -61,10 +62,11 @@ body {
 .game-page {
   display: none;
   position: absolute;
-  width: 100vw;
-  margin: auto;
+  min-height: 100vh;
+  min-width: 100vw;
+  /* margin: auto; */
   text-align: center;
-  justify-content: start;
+  /* justify-content: start; */
   align-items: center;
   background-image: radial-gradient(white 30%, skyblue);
 }
@@ -131,12 +133,6 @@ h2 {
   width: 200px;
   background-image: url("https://i.pinimg.com/736x/37/20/f2/3720f2d01965ea962dacf6f4cfcbf3e4.jpg");
   border: 1px solid #f5f5f5;
-}
-
-.tile.peng.fell {
-  background-image: none;
-  background-color: black;
-  cursor: not-allowed;
 }
 
 .tile:not(peng).fell {
