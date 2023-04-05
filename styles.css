@@ -1,6 +1,7 @@
 * {
   box-sizing: border-box;
   font-family: "Delicious Handrawn", cursive;
+  letter-spacing: 3px;
 }
 
 :root {
@@ -25,6 +26,7 @@ body {
   flex-direction: column;
   text-align: center;
   padding: 10px;
+  text-shadow: 3px 3px 3px white;
 }
 
 .start-page.show {
