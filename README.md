@@ -47,7 +47,8 @@ This is replicated for top right, bottom left and bottom right.
 
 The penguin will fall when full supports on adjacent sides of it have been removed. The minimum support can be from top/bottom or left/right.
 
-![peng](https://user-images.githubusercontent.com/107488028/230398552-18732793-4516-4214-b067-4f740220aecf.png) ![peng2](https://user-images.githubusercontent.com/107488028/230398666-c397a13e-7d06-4d9d-a3c0-f64c649794b2.png)
+<img src="https://user-images.githubusercontent.com/107488028/230398552-18732793-4516-4214-b067-4f740220aecf.png"  width="30%" height="30%">
+<img src="https://user-images.githubusercontent.com/107488028/230398666-c397a13e-7d06-4d9d-a3c0-f64c649794b2.png"  width="30%" height="30%">
 
 The index pairs of the tiles for minimum support are put into an array. A function checks each pair if any have fallen and returns `true` if every pair has at least one fallen tile. when `true`, penguin will fall.
 
@@ -63,6 +64,6 @@ function checkPengFall() {
 }
 ```
 
-## Wireframe
-
 ## Unsolved problems/major hurdle
+
+The ripple effect for the tiles does not extend further at times. Due to the size of the board, this is not very apparent but it will be if the board gets bigger. This may be solved by designing the array for tiles to be 2D or using a recursive function, but not yet explored.
