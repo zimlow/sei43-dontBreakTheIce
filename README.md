@@ -22,16 +22,20 @@ The game also has a toggle function to keep track of each player's choices.
 
 A tile will fall if its adjacent supports have been removed. As such, the chosen tile will check if its diagonally-adjacent tile has fallen, thereafter remove its adjacent tiles. for this example, if player chooses tile 2, and it checks tile 1 had already fallen, tile 3 and 4 will fall
 
-![tile1](.\tile1.png) ![tile2](.\tile2.png) ![tile3](.\tile3.png)
+![tile1](https://user-images.githubusercontent.com/107488028/230398767-68158dd0-f4c5-4c71-85d5-1288c4249783.png) ![tile2](https://user-images.githubusercontent.com/107488028/230398803-4a080cc0-2061-4c79-9f9b-6427dcb03d0f.png) ![tile3](https://user-images.githubusercontent.com/107488028/230398821-6dbaccb9-783d-40e9-8d55-7632c8500a84.png)
 
 The code is:
-`for (let i = 0; i < tileElements.length; i++) {
-        if (tileElements[i].classList.contains("fell")) {
-        if (T_LEFT.indexOf(i) >= 0) {
-            if (tileElements[i - 7].classList.contains("fell")) {
+
+```
+for (let i = 0; i < tileElements.length; i++) {
+    if (tileElements[i].classList.contains("fell")) {
+    if (T_LEFT.indexOf(i) >= 0) {
+        if (tileElements[i - 7].classList.contains("fell")) {
             tileElements[i - 6].classList.add("fell");
             tileElements[i - 1].classList.add("fell");
-            }}}}`
+            }}}}
+```
+
 where T_LEFT is an array of tile indexes that would be required to check their top left tile.
 
 This is replicated for top right, bottom left and bottom right.
@@ -40,18 +44,21 @@ This is replicated for top right, bottom left and bottom right.
 
 The penguin will fall when full supports on adjacent sides of it have been removed. The minimum support can be from top/bottom or left/right.
 
-![peng1](.\peng.png) ![peng2](.\peng2.png)
+![peng](https://user-images.githubusercontent.com/107488028/230398552-18732793-4516-4214-b067-4f740220aecf.png) ![peng2](https://user-images.githubusercontent.com/107488028/230398666-c397a13e-7d06-4d9d-a3c0-f64c649794b2.png)
 
 The index pairs of the tiles for minimum support are put into an array. A function checks each pair if any have fallen and returns `true` if every pair has at least one fallen tile. when `true`, penguin will fall.
 
 The code is:
-`function checkPengFall() {
+
+```
+function checkPengFall() {
   return FALL_CRITERIA.every((combination) => {
     return combination.some((index) => {
       return tileElements[index].classList.contains("fell");
     });
   });
-}`
+}
+```
 
 ## Wireframe
 
