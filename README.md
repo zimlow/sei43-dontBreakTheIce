@@ -1,6 +1,3 @@
-<img src="https://user-images.githubusercontent.com/107488028/230398552-18732793-4516-4214-b067-4f740220aecf.png"  width="50%" height="50%">
-<img src="https://user-images.githubusercontent.com/107488028/230398666-c397a13e-7d06-4d9d-a3c0-f64c649794b2.png"  width="50%" height="50%">
-
 # Project 1 - Don't Break the Ice
 
 ## Overview
